@@ -5,13 +5,14 @@ class Order:
     """This class creates a single order"""
 
     id = 0
-    PROPERTIES = ['symbol', 'side', 'quantity', 'price', 'destination']
+    PROPERTIES = ['symbol', 'side', 'quantity', 'price', 'destination', 'state']
 
     def __init__(self):
         self.myConfig = config.Config().get_config_section(self.__class__.__name__)
         [setattr(self, property, None) for property in self.PROPERTIES]
         self.__class__.id += 1
         self.id = self.__class__.id
+        self.state = 'PendingSend'
 
     def set_property(self, property, value):
         """Allows you to set any single property of the order"""
@@ -27,4 +28,4 @@ class Order:
 
     def get_properties_dict(self):
         """Returns all properties/values of the order in a dictionary"""
-        return vars(self)
+        print [getattr(self, property) for property in self.PROPERTIES]

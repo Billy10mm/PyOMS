@@ -9,5 +9,5 @@ class OrderManager:
         self.myConfig = config.Config().get_config_section(self.__class__.__name__)
         self.books = {}
 
-    def create_book(self, account):
-        self.books[account] = book.Book(account)
+    def create_book(self, book_name):
+        self.books[book_name] = book.Book(book_name)

@@ -19,11 +19,12 @@ class Config:
             self.config_file = args.config_file
 
         self.config = ConfigParser.ConfigParser()
+        self.config.optionxform = str
         self.config.read(self.config_file)
 
     def get_config_section(self, section):
         """Returns a dictionary of config parameters from the provided section"""
-        return dict(self.config.items(section.upper()))
+        return dict(self.config.items(section))
 
     def get_config(self, section, item):
         """Returns a single config value from the provided section and key"""
